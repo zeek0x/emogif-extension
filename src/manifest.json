@@ -1,0 +1,12 @@
+{
+  "name": "emogif-extension",
+  "version": "1.0.0",
+  "manifest_version": 2,
+  "description": "Emogif Upload Extension",
+  "content_scripts": [{
+    "matches": ["https://zeek0x.github.io/emogif/*"],
+    "js": [
+      "content.js"
+    ]
+  }]
+}
