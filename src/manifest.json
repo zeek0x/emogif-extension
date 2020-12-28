@@ -3,10 +3,24 @@
   "version": "1.0.0",
   "manifest_version": 2,
   "description": "Emogif Upload Extension",
+  "background": {
+    "scripts": [
+      "eventType.js",
+      "background/slack.js",
+      "background/index.js"
+    ],
+    "persistent": false
+  },
   "content_scripts": [{
     "matches": ["https://zeek0x.github.io/emogif/*"],
     "js": [
-      "content.js"
+      "eventType.js",
+      "content/slack.js",
+      "content/index.js"
     ]
-  }]
+  }],
+  "permissions": [
+    "https://zeek0x.github.io/emogif/*",
+    "https://*.slack.com/*"
+  ]
 }
