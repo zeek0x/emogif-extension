@@ -30,7 +30,9 @@ const main = async () => {
     const url = document.querySelector('img').src
     const text = nameInput.value
     const teamdomain = teamdomainSelect.value
-    const result = await slack.registerEmoji(url, text, teamdomain)
+    const result =
+      await slack.registerEmoji(url, text, teamdomain)
+        .catch((error) => { return ['error', error] })
     informationSpan.textContent = resultToMessage(result)
     event.target.disabled = false
   }
