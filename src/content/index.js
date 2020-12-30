@@ -4,15 +4,6 @@ const main = async () => {
   const registerButton = document.createElement('button')
   const informationSpan = document.createElement('span')
 
-  const [okError, teams] = await slack.searchJoinedTeams()
-  if ( okError === 'error' ) { return }
-
-  teams.forEach(teamdomain => {
-    const teamdomainOption = document.createElement('option')
-    teamdomainOption.textContent = teamdomain
-    teamdomainSelect.appendChild(teamdomainOption)
-  })
-
   registerButton.textContent = 'register'
   registerButton.onclick = async (event) => {
     event.target.disabled = true
@@ -29,6 +20,19 @@ const main = async () => {
   document.body.appendChild(nameInput)
   document.body.appendChild(registerButton)
   document.body.appendChild(informationSpan)
+
+  // After DOM elements have appended
+  const [okError, teams] = await slack.searchJoinedTeams()
+  if ( okError === 'error' ) {
+    informationSpan.textContent = 'Failed to get teamdomain.'
+    return
+  }
+
+  teams.forEach(teamdomain => {
+    const teamdomainOption = document.createElement('option')
+    teamdomainOption.textContent = teamdomain
+    teamdomainSelect.appendChild(teamdomainOption)
+  })
 }
 
 main()
