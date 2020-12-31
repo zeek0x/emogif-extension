@@ -17,24 +17,31 @@ const resultToMessage = ([okError, message], name) => {
 }
 
 const main = async () => {
+  const img = document.querySelector('img')
   const teamdomainSelect = document.createElement('select')
   const nameInput = document.createElement('input')
   const registerButton = document.createElement('button')
   const informationSpan = document.createElement('span')
 
   registerButton.textContent = 'register'
-  registerButton.onclick = async (event) => {
-    event.target.disabled = true
+  registerButton.disabled = true
+
+  img.onload = event => {
+    registerButton.disabled = false
+  }
+
+  registerButton.onclick = async ({target}) => {
+    target.disabled = true
     informationSpan.textContent = ''
 
-    const url = document.querySelector('img').src
+    const url = img.src
     const text = nameInput.value
     const teamdomain = teamdomainSelect.value
     const result =
       await slack.registerEmoji(url, text, teamdomain)
-        .catch((error) => { return ['error', error] })
+        .catch(error => { return ['error', error] })
     informationSpan.textContent = resultToMessage(result)
-    event.target.disabled = false
+    target.disabled = false
   }
   document.body.appendChild(teamdomainSelect)
   document.body.appendChild(nameInput)
