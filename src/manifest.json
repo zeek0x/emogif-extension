@@ -22,5 +22,8 @@
   "permissions": [
     "https://zeek0x.github.io/emogif/*",
     "https://*.slack.com/*"
-  ]
+  ],
+  "icons" : {
+    "128": "icon.png"
+  }
 }
