@@ -2,7 +2,7 @@
   "name": "emogif-extension",
   "version": "1.0.0",
   "manifest_version": 2,
-  "description": "Emogif Upload Extension",
+  "description": "The emogif uploader for slack.",
   "background": {
     "scripts": [
       "eventType.js",
