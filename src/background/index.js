@@ -17,6 +17,7 @@ const registerEmoji = ({url, text, teamdomain}, sender, sendResponse) => {
 }
 
 const main = () => {
+  browserAction.addListener()
   chrome.runtime.onMessage.addListener(
     (request, sender, sendResponse) => {
       switch(request.type) {

@@ -3,10 +3,12 @@
   "version": "1.0.0",
   "manifest_version": 2,
   "description": "The emogif uploader for slack.",
+  "browser_action": {},
   "background": {
     "scripts": [
       "eventType.js",
       "background/slack.js",
+      "background/browserAction.js",
       "background/index.js"
     ],
     "persistent": false
